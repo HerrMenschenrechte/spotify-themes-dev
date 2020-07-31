@@ -65,7 +65,7 @@ router.get('/token', async function (req, res, next) {
   let response_type = '?response_type=code'
   let redirect_uri = '&redirect_uri=http://localhost:3000/users/code'
   let state = '&state=34fFs29kd09'
-  let scope = '&scope=user-read-private user-read-email'
+  let scope = '&scope=user-read-private user-read-email playlist-modify-public playlist-modify-private playlist-read-collaborative playlist-read-private'
 
   let code_request_url = base_url + authentication_url + response_type + client_id + scope + redirect_uri + state
 
