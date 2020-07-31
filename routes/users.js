@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var api = require('axios')
+var db = require('../database/db')
+var sql = require('../database/sql_queries')
+
 
 /* GET users listing. */
 router.get('/login', function (req, res) {
@@ -24,6 +27,8 @@ router.get('/code', async function (req, res) {
   let grant_type = 'authorization_code'
   let redirect_uri = 'http://localhost:3000/users/code'
   let token_url = token_base_url
+  let connection = await db.createPool().catch(err => console.log(err))
+  let user = { 'first_name': 'Cedric', 'last_name': 'Mensah', 'access_token': '', 'refresh_token': '' }
 
   let access_token = await api.request({
     url: token_base_url,
@@ -40,8 +45,12 @@ router.get('/code', async function (req, res) {
       'authorization': 'Basic NzA2N2I3ZDVkMzkwNDBhYTllODA0NTVlN2JmN2EyNTk6ZWM4NTBlNTU3NjUwNGE4ODg2YThlNmY1ZTAxZjNmMzI='
     }
   }).catch(err => { console.log(err) })
-  console.log(token_url)
-  console.log(access_token)
+  user.access_token = access_token.data.access_token
+  user.refresh_token = access_token.data.refresh_token
+  console.log(user)
+  let db_response = await connection.query(sql.sql_insert_user, [[user.first_name, user.last_name, user.access_token, user.refresh_token]]).catch(err => console.log(err))
+  console.log(db_response)
+  // console.log(access_token)
   res.render('index', { title: "Spotify Themes App" })
 
 

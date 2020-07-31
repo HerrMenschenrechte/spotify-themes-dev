@@ -8,7 +8,7 @@ exports.createPool = async function () {
             connectionLimit: 30,
             acquireTimeout: 100000,
             port: 3306,
-            host: 'localhost:3306',
+            host: 'localhost',
             user: 'root',
             password: ':Dbvb909',
             database: 'Spotify',
