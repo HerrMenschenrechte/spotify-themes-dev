@@ -16,7 +16,7 @@ router.get('/search', async function (req, res, next) {
         method: "get",
         url: "https://api.spotify.com/v1/search",
         headers: { 'Authorization': 'Bearer ' + access_token },
-        params: { 'q': "all+night+long", 'type': 'track' }
+        params: { 'q': "q=all+night+long", 'type': 'track' }
     }).catch(err => console.log(err))
 
     console.log(song)
