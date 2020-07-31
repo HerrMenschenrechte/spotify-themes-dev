@@ -1,0 +1,1 @@
+exports.sql_insert_user = `INSERT INTO Spotify.users (first_name, last_name, access_token, refresh_token) VALUES ?`
