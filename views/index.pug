@@ -11,7 +11,8 @@ block content
         h1 Search for a theme to create your playlist
     .row
       .col
-        .input-group
-          input.form-control(type='text', method='POST', action='/search' placeholder="Give us a theme ;-)", aria-label="Theme", aria-describedby='basic-addon2')
-          .input-group-append
-            button.btn.btn-outline-secondary(type='submit') Search
+        form(action='spotify_api/search', method='post')
+          .input-group
+            input.form-control(name='query', type='text', placeholder="Give us a theme ;-)", aria-label="Theme", aria-describedby='basic-addon2')
+            .input-group-append
+              button.btn.btn-outline-secondary(type='submit') Search
