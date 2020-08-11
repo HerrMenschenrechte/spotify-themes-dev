@@ -3,6 +3,7 @@ var router = express.Router();
 var api = require('axios')
 var db = require('../database/db')
 var sql = require('../database/sql_queries')
+var dom = require('../public/javascripts/playlist_table')
 
 /* GET home page. */
 router.post('/search', async function (req, res, next) {
@@ -15,7 +16,10 @@ router.post('/search', async function (req, res, next) {
     let song_ids = await processSongs(result).catch(err => console.log(err))
     await addSongsToPlaylist(song_ids).catch(err => console.log(err))
     await createPlaylist(token).catch(err => console.log(err))
-    res.end(JSON.stringify(result.data.tracks.items))
+    console.log(result.items)
+
+
+    res.render('index', { data: result.items })
 
 });
 
@@ -132,13 +136,13 @@ async function findSongs(token, search_query) {
 
     console.log(result)
 
-    return result
+    return result.data.tracks
 }
 
 async function processSongs(songs) {
 
     let song_ids = []
-    songs.data.tracks.items.forEach(element => {
+    songs.items.forEach(element => {
         console.log(element.id)
         song_ids.push("spotify:track:" + element.id)
 

@@ -1,5 +1,6 @@
 extends layout
 
+
 block content
   .container-fluid
     .row
@@ -16,3 +17,30 @@ block content
             input.form-control(name='query', type='text', placeholder="Give us a theme ;-)", aria-label="Theme", aria-describedby='basic-addon2')
             .input-group-append
               button.btn.btn-outline-secondary(type='submit') Search
+    .row
+      .col
+        table.table.table-dark(id='table')
+          thead
+            tr
+              th(scope='col') #
+              th(scope='col') Song
+              th(scope='col') Artist
+              th(scope='col') Year
+          tbody(id='table_element')
+            if data 
+             - var counter = 1
+              each song in data 
+              
+                tr
+                  th(scope='row')= counter++
+                  td= song.name
+                  td= song.artists[0].name
+                  td= song.album.release_date
+            else 
+            
+
+    .row
+      .col
+        button.btn-lg.btn-success(type='button', method='post', action='/create_playlist') Create your Playlist
+
+    
