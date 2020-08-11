@@ -3,7 +3,6 @@ var router = express.Router();
 var api = require('axios')
 var db = require('../database/db')
 var sql = require('../database/sql_queries')
-var dom = require('../public/javascripts/playlist_table')
 
 /* GET home page. */
 router.post('/search', async function (req, res, next) {
