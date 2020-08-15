@@ -1,8 +1,33 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 80px;
+  font-family: 14px "proxima-nova, sans-serif";
+  font-style: normal;
+  font-weight: 100;
+  height: 100vh;
+}
+
+.navbar {
+  display: inline;
 }
 
 a {
   color: #00B7FF;
+}
+
+.btn-lg.btn-success {
+  width: 100%
+}
+
+.responsive {
+  width: auto;
+  height: auto;
+  max-height: 50px
+}
+
+.new_row {
+  margin-top: 70px;
+}
+
+.table {
+  table-layout: auto;
 }

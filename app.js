@@ -20,11 +20,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var dataRouter = require('./routes/spotify_api')
+// var dataRouter = require('./routes/spotify_api')
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/spotify_api', dataRouter)
+// app.use('/spotify_api', dataRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

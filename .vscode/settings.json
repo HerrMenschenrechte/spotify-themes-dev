@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/1ba2e08b-51f8-4223-b900-59cc1f7c24dd/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/spotify-themes",
+    "appService.deploySubpath": "."
+}

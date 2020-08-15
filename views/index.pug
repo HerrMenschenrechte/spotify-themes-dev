@@ -2,45 +2,52 @@ extends layout
 
 
 block content
-  .container-fluid
+  .container-fluid.main.px-4.mt-4
     .row
-      .col
-        h1= title
-        p Automatically create your own playlists using #{title}
+      .col.mt-2
+          unless data
+            h2 Automatically create your own theme based playlists using the Spotify Themes App
+            p.font-weight-bold.mt-4 Here is how it works: 
+            p Enter a theme, thought or whatever you can think of in the search bar and the app will automatically generate a playlist with 20 songs for you based on that search. Easy, right?  If you like the playlist, you can click on "Create your Playlist" to automatically add it to your account in the Spotify app 👌🏾
+
+        
+
     .row
-      .col
-        h1 Search for a theme to create your playlist
+      unless data
+        .col.mt-2
+          h2 Search for a theme to create your playlist
+
     .row
-      .col
-        form(action='spotify_api/search', method='post')
-          .input-group
-            input.form-control(name='query', type='text', placeholder="Give us a theme ;-)", aria-label="Theme", aria-describedby='basic-addon2')
-            .input-group-append
-              button.btn.btn-outline-secondary(type='submit') Search
+      unless data
+        .col.mt-2
+          form(action='/', method='post')
+            .input-group
+              input.form-control(name='query', type='text', placeholder="Give us a theme ;-)", aria-label="Theme", aria-describedby='basic-addon2')
+              .input-group-append(id="search")
+                button.btn.btn-outline-secondary(type='submit') Search
+    .row.new_row
+      .col.mt-2
+        if data 
+          h2 Yay, we found these 20 songs that match your theme 😊! 
+          p Click on "Create your playlist" to generate your playlist in Spotify and start jamming 🎹
     .row
-      .col
-        table.table.table-dark(id='table')
+      if data
+        table.table.table-bordered.table-striped.table-dark.mt-4
           thead
             tr
               th(scope='col') #
               th(scope='col') Song
               th(scope='col') Artist
               th(scope='col') Year
-          tbody(id='table_element')
-            if data 
-             - var counter = 1
+          tbody
+            if data
+              - var counter = 1
               each song in data 
-              
                 tr
                   th(scope='row')= counter++
                   td= song.name
                   td= song.artists[0].name
                   td= song.album.release_date
-            else 
-            
-
-    .row
-      .col
-        button.btn-lg.btn-success(type='button', method='post', action='/create_playlist') Create your Playlist
-
+              
     
+      
