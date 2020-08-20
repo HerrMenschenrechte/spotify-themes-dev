@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var api = require('axios')
-var db = require('../public/database/db')
-var sql = require('../public/database/sql_queries')
 
 router.get(['/code', '/:'], async function (req, res) {
   let code = req.query.code
@@ -24,7 +22,7 @@ router.get(['/code', '/:'], async function (req, res) {
     headers:
     {
       'content-type': 'application/x-www-form-urlencoded',
-      'authorization': 'Basic NzA2N2I3ZDVkMzkwNDBhYTllODA0NTVlN2JmN2EyNTk6ZWM4NTBlNTU3NjUwNGE4ODg2YThlNmY1ZTAxZjNmMzI='
+      'authorization': 'Basic ' + process.env.client_secret
     }
 
 
