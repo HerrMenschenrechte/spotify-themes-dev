@@ -33,15 +33,13 @@ async function refreshToken(session) {
 
 
 
-async function createPlaylist(token, playlist_name) {
+async function createPlaylist(token, playlist_name, active_user) {
 
-    let doesExist = []
-    let id = []
 
 
     let playlist = api.request({
         method: 'POST',
-        url: 'https://api.spotify.com/v1/users/teddmanbvb/playlists',
+        url: 'https://api.spotify.com/v1/users/' + active_user + '/playlists',
         headers: { 'Authorization': 'Bearer ' + token, 'content-type': 'application/json' },
         data: { 'name': playlist_name, }
 

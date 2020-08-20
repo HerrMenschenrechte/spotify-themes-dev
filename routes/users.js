@@ -4,11 +4,11 @@ var api = require('axios')
 var db = require('../public/database/db')
 var sql = require('../public/database/sql_queries')
 
-router.get('/code', async function (req, res) {
+router.get(['/code', '/:'], async function (req, res) {
   let code = req.query.code
   let token_base_url = 'https://accounts.spotify.com/api/token'
   let grant_type = 'authorization_code'
-  let redirect_uri = 'http://localhost:3000/users/code'
+  let redirect_uri = 'https://spotify-themes.azurewebsites.net/users/code'
   let user = { 'username': '', 'access_token': '', 'refresh_token': '' }
 
 
@@ -26,6 +26,8 @@ router.get('/code', async function (req, res) {
       'content-type': 'application/x-www-form-urlencoded',
       'authorization': 'Basic NzA2N2I3ZDVkMzkwNDBhYTllODA0NTVlN2JmN2EyNTk6ZWM4NTBlNTU3NjUwNGE4ODg2YThlNmY1ZTAxZjNmMzI='
     }
+
+
   }).catch(err => console.log(err))
 
 
@@ -63,7 +65,7 @@ router.get('/token', async function (req, res, next) {
   let authentication_url = '/authorize'
   let client_id = '&client_id=7067b7d5d39040aa9e80455e7bf7a259'
   let response_type = '?response_type=code'
-  let redirect_uri = '&redirect_uri=http://localhost:3000/users/code'
+  let redirect_uri = '&redirect_uri=https://spotify-themes.azurewebsites.net/users/code'
   let state = '&state=34fFs29kd09'
   let scope = '&scope=user-read-private user-read-email playlist-modify-public playlist-modify-private playlist-read-collaborative playlist-read-private'
 
