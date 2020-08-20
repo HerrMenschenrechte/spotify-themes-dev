@@ -63,7 +63,7 @@ router.get('/token', async function (req, res, next) {
 
   let base_url = 'https://accounts.spotify.com'
   let authentication_url = '/authorize'
-  let client_id = '&client_id=7067b7d5d39040aa9e80455e7bf7a259'
+  let client_id = '&client_id=' + process.env.client_id
   let response_type = '?response_type=code'
   let redirect_uri = '&redirect_uri=https://spotify-themes.azurewebsites.net/users/code'
   let state = '&state=34fFs29kd09'

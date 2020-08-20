@@ -14,13 +14,13 @@ async function refreshToken(session) {
         params: {
             'grant_type': 'refresh_token',
             'refresh_token': refresh_token,
-            'client_id': '7067b7d5d39040aa9e80455e7bf7a259'
+            'client_id': process.env.client_id
         },
 
         headers:
         {
             'content-type': 'application/x-www-form-urlencoded',
-            'authorization': 'Basic NzA2N2I3ZDVkMzkwNDBhYTllODA0NTVlN2JmN2EyNTk6ZWM4NTBlNTU3NjUwNGE4ODg2YThlNmY1ZTAxZjNmMzI='
+            'authorization': 'Basic ' + process.env.client_secret
         }
     }).catch(err => console.log(err))
 
