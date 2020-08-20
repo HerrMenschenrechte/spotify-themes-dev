@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
 
   console.log(req.cookies.session_user)
   if (req.cookies.session_user === undefined) {
-    res.redirect('/users/token')
+    res.render('login', { title: "Spotify Theme Playlists" })
   } else {
     res.render('index', { title: 'Spotify Theme Playlists' });
 
