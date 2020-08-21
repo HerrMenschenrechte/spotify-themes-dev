@@ -1,3 +1,4 @@
+var appInsights = require('applicationinsights');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -17,6 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+appInsights.setup("1006f52d-9d72-4ccc-8e71-1a644bfb34fc").start();
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
