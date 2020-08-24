@@ -5,7 +5,6 @@ var spotify = require('../public/api/spotify_api')
 /* GET home page. */
 router.get('/', function (req, res, next) {
 
-  console.log(req.cookies.session_user)
   if (req.cookies.session_user === undefined) {
     res.render('login', { title: "Spotify Theme Playlists" })
   } else {
@@ -38,19 +37,12 @@ router.post('/', async function (req, res, next) {
 router.post('/create_playlist', async function (req, res, next) {
 
   let session = req.cookies
-  console.log(session)
-
 
   let fresh_token = await spotify.refreshToken(session).catch(err => console.log(err))
 
   let playlist = await spotify.createPlaylist(fresh_token, session.playlist_name, session.session_user)
 
-  console.log(playlist)
-
   let success = await spotify.addSongsToPlaylist(fresh_token, session.songs, playlist.data.id)
-
-  console.log(success)
-
 
   res.clearCookie('songs')
   res.clearCookie('playlist_name')
