@@ -2,7 +2,7 @@ $("#create_playlist").click(function () {
     console.log(document.cookie)
 
     $.ajax({
-        url: "/playlist_created",
+        url: "/create_playlist",
         type: "post",
         data: document.cookie,
         success: function (data) {
