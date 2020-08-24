@@ -14,11 +14,6 @@ router.get('/', function (req, res, next) {
   }
 });
 
-router.get('/callback', async function (req, res, next) {
-  res.render('index', { title: "Spotify Themes App" })
-
-})
-
 
 router.post('/', async function (req, res, next) {
 
