@@ -40,7 +40,7 @@ router.post('/', async function (req, res, next) {
 
 });
 
-router.post('/playlist_created', async function (req, res, next) {
+router.post('/create_playlist', async function (req, res, next) {
 
   let session = req.cookies
   console.log(session)
@@ -61,7 +61,7 @@ router.post('/playlist_created', async function (req, res, next) {
   res.clearCookie('playlist_name')
 })
 
-router.get('/success', async function (req, res, next) {
+router.get('/playlist_created', async function (req, res, next) {
   res.render('success', { title: "Your Playlist has been created" })
 
 })
