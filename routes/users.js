@@ -7,8 +7,6 @@ router.get(['/code', '/:'], async function (req, res) {
   let token_base_url = 'https://accounts.spotify.com/api/token'
   let grant_type = 'authorization_code'
   let redirect_uri = 'https://spotify-themes.azurewebsites.net/users/code'
-  let user = { 'username': '', 'access_token': '', 'refresh_token': '' }
-
 
   let access_token = await api.request({
     url: token_base_url,
@@ -42,15 +40,9 @@ router.get(['/code', '/:'], async function (req, res) {
 
   console.log(username)
 
-  user.username = username.data.id
-  user.access_token = access_token.data.access_token
-  user.refresh_token = access_token.data.refresh_token
-
-  console.log(user)
-
-  res.cookie('session_user', user.username)
-  res.cookie('access_token', user.access_token)
-  res.cookie('refresh_token', user.refresh_token)
+  res.cookie('session_user', username.data.id)
+  res.cookie('access_token', access_token.data.access_token)
+  res.cookie('refresh_token', access_token.data.refresh_token)
   res.render('index', { title: "Spotify Themes App" })
 
 
