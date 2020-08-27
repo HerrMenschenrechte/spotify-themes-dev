@@ -18,8 +18,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
-app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
+app.use('/jquery', express.static(path.join(__dirname, '/node_modules/jquery/dist/')));
 
 
 appInsights.setup("1006f52d-9d72-4ccc-8e71-1a644bfb34fc").start();
