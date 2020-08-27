@@ -38,8 +38,6 @@ router.get(['/code', '/:'], async function (req, res) {
     }
   }).catch(err => console.log(err))
 
-  console.log(username)
-
   res.cookie('session_user', username.data.id)
   res.cookie('access_token', access_token.data.access_token)
   res.cookie('refresh_token', access_token.data.refresh_token)
@@ -61,9 +59,7 @@ router.get('/token', async function (req, res, next) {
 
   let code_request_url = base_url + authentication_url + response_type + client_id + scope + redirect_uri + state
 
-  let response = await api.get(code_request_url).catch(err => { console.log(err) })
-  console.log(response)
-
+  let response = await api.get(code_request_url).catch(err => console.log(err))
 
   res.redirect(code_request_url)
 
