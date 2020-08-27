@@ -17,9 +17,9 @@ router.get('/', function (req, res, next) {
 router.post('/', async function (req, res, next) {
 
   let session = req.cookies
+  let search_query = req.body.query
 
   let fresh_token = await spotify.refreshToken(session).catch(err => console.log(err))
-  let search_query = req.body.query
   console.log("The user has searched for: " + search_query)
 
 
@@ -40,9 +40,9 @@ router.post('/create_playlist', async function (req, res, next) {
 
   let fresh_token = await spotify.refreshToken(session).catch(err => console.log(err))
 
-  let playlist = await spotify.createPlaylist(fresh_token, session.playlist_name, session.session_user)
+  let playlist = await spotify.createPlaylist(fresh_token, session.playlist_name, session.session_user).catch(err => console.log(err))
 
-  let success = await spotify.addSongsToPlaylist(fresh_token, session.songs, playlist.data.id)
+  let success = await spotify.addSongsToPlaylist(fresh_token, session.songs, playlist.data.id).catch(err => console.log(err))
 
   res.clearCookie('songs')
   res.clearCookie('playlist_name')
