@@ -31,3 +31,9 @@ a {
 .table {
   table-layout: auto;
 }
+
+@media (max-width:400px) {
+  .phone-table {
+    font-size: 12px
+  }
+}
