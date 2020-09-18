@@ -22,8 +22,8 @@ app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dis
 app.use('/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/js')));
 app.use('/jquery', express.static(path.join(__dirname, '/node_modules/jquery/dist/')));
 
-
-appInsights.setup("1006f52d-9d72-4ccc-8e71-1a644bfb34fc").start();
+// App insights deactivated for dev branch
+// appInsights.setup("1006f52d-9d72-4ccc-8e71-1a644bfb34fc").start();
 
 
 var indexRouter = require('./routes/index');
