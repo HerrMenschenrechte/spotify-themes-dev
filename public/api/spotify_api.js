@@ -6,21 +6,19 @@ async function refreshToken(session) {
 
     console.log(session)
     refresh_token = session.refresh_token
-    console.log(refresh_token)
 
     let new_access_token = await api.request({
         url: 'https://accounts.spotify.com/api/token',
-        method: 'post',
+        method: 'POST',
         params: {
             'grant_type': 'refresh_token',
             'refresh_token': refresh_token,
-            'client_id': "f822f424fd864e459d4953e969865a7f"
         },
 
         headers:
         {
             'content-type': 'application/x-www-form-urlencoded',
-            'authorization': 'Basic ' + "1f1873ac40a7430881a4bf95c054eb12"
+            'authorization': 'Basic ZjgyMmY0MjRmZDg2NGU0NTlkNDk1M2U5Njk4NjVhN2Y6MWYxODczYWM0MGE3NDMwODgxYTRiZjk1YzA1NGViMTI='
         }
     }).catch(err => console.log(err))
 
