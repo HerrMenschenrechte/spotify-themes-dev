@@ -59,7 +59,7 @@ async function findSongs(token, search_query) {
         method: "get",
         url: "https://api.spotify.com/v1/search",
         headers: { 'Authorization': 'Bearer ' + token },
-        params: { 'q': search_query, 'type': 'track' }
+        params: { 'q': search_query, 'type': 'track', 'market': 'from_token' }
     }).catch(async function handleError(err) {
         console.log(err)
         let refreshed_token = await refreshToken(username)
