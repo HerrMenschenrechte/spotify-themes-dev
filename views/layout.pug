@@ -19,7 +19,7 @@ html(lang="en")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js")
 
     // App Insights deactivated for dev repo
-    // script(src="/javascripts/webanalytics.js")
+    script(src="/javascripts/webanalytics.js")
 
 
   body
@@ -32,6 +32,25 @@ html(lang="en")
           button(id="create_playlist", role="button").btn-lg.btn-success.mt-2.mb-2 Create your Playlist
       
   block content
+
+  footer.footer.align-items-center
+    .row(id="consentPopup")
+      .col
+        p.cookie This Website uses cookies (see #[a.consent-button(href="/cookies") Cookies Policy] for more information)
+        p(id="consentButton") #[a.consent-button(href="javascript:void(0)") Accept and Continue]
+    
+
+    footer.bg-dark
+      .container
+        .row.footer-row
+          .col-md
+            a.nav-link(href="cookies") Cookies Policy
+          .col-md
+            a.nav-link(href="mailto:cmensahde@gmail.com") Contact
+          .col-md
+            span.nav-link © 2020 Cedric Mensah      
+
+    
 
 
   script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
