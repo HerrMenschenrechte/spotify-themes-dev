@@ -13,6 +13,10 @@ router.get('/', function (req, res, next) {
   }
 });
 
+router.get('/cookies', function (req, res, next) {
+  res.render('cookies', { title: "Cookies Policy" })
+}
+)
 
 router.post('/', async function (req, res, next) {
 
