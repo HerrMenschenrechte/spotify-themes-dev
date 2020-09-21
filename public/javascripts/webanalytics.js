@@ -4,3 +4,27 @@ var sdkInstance = "appInsightsSDK"; window[sdkInstance] = "appInsights"; var aiN
         instrumentationKey: "1006f52d-9d72-4ccc-8e71-1a644bfb34fc"
     }
 ); window[aiName] = aisdk, aisdk.queue && 0 === aisdk.queue.length && aisdk.trackPageView({});
+
+
+window.onpageshow = function () {
+
+    if (localStorage.getItem('cookieConsent') !== 'yes' || undefined) {
+
+        document.getElementById("consentPopup").style = "justify-content: center"
+
+        document.getElementById("consentButton").onclick = function () {
+
+            document.getElementById("consentPopup").style.display = "none";
+            window.localStorage.setItem('cookieConsent', 'yes')
+            console.log("This is working")
+
+
+
+        }
+
+    } else {
+        document.getElementById('consentPopup').style.display = "none"
+    }
+
+}
+
