@@ -8,7 +8,7 @@ var sdkInstance = "appInsightsSDK"; window[sdkInstance] = "appInsights"; var aiN
 
 window.onpageshow = function () {
 
-    if (localStorage.getItem('cookieConsent') !== 'yes' || undefined) {
+    if (localStorage.getItem('cookieConsent') !== 'yes' || undefined || null) {
 
         document.getElementById("consentPopup").style = "justify-content: center"
 
@@ -16,9 +16,6 @@ window.onpageshow = function () {
 
             document.getElementById("consentPopup").style.display = "none";
             window.localStorage.setItem('cookieConsent', 'yes')
-            console.log("This is working")
-
-
 
         }
 
