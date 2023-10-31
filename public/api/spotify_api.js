@@ -13,6 +13,7 @@ async function refreshToken(session) {
         params: {
             'grant_type': 'refresh_token',
             'refresh_token': refresh_token,
+            'client_id': 'f822f424fd864e459d4953e969865a7f'
         },
 
         headers:
